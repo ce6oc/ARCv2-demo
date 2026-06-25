@@ -330,7 +330,7 @@ function renderAudio(scene, onSubmit, mountEl) {
     contentBlock(scene.content) +
     (ie.question ? `<h3 class="text-lg font-bold text-brand-700 mb-4">${esc(ie.question)}</h3>` : '') +
     `<div class="flex flex-col items-center gap-4 mb-5">` +
-    `<button data-action="record" type="button" ` +
+    `<button data-action="record" type="button" aria-label="Record audio response" ` +
     `class="w-24 h-24 rounded-full bg-brand-500 text-white text-3xl hover:bg-brand-600 transition-colors shadow-lg">🎤</button>` +
     `<div data-timer class="text-brand-600 font-mono">0s</div>` +
     `<div data-waveform class="hidden items-end gap-1 h-10 w-28 justify-center">${bars}</div>` +

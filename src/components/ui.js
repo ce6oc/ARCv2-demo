@@ -25,7 +25,7 @@ export function logo({ small = false } = {}) {
   )
 }
 
-export function button(label, { variant = 'primary', href, size = 'md', cls = '' } = {}) {
+export function button(label, { variant = 'primary', href, size = 'md', cls = '', ariaLabel } = {}) {
   const variants = {
     primary: 'bg-brand-500 text-white hover:bg-brand-600',
     accent: 'bg-accent-500 text-white hover:bg-accent-600',
@@ -41,8 +41,9 @@ export function button(label, { variant = 'primary', href, size = 'md', cls = ''
   const base = 'rounded-pill font-bold inline-flex items-center gap-2 transition'
   const classes = `${base} ${variants[variant] || variants.primary} ${sizes[size] || sizes.md} ${cls}`.trim()
   const inner = esc(label)
-  if (href) return `<a href="${esc(href)}" class="${classes}">${inner}</a>`
-  return `<button type="button" class="${classes}">${inner}</button>`
+  const aria = ariaLabel ? ` aria-label="${esc(ariaLabel)}"` : ''
+  if (href) return `<a href="${esc(href)}" class="${classes}"${aria}>${inner}</a>`
+  return `<button type="button" class="${classes}"${aria}>${inner}</button>`
 }
 
 export function badge(label, { color = 'brand' } = {}) {

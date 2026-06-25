@@ -2,7 +2,7 @@
 import { logo, button, avatar, esc } from './ui.js'
 
 export function studentShell({ title, content, back } = {}) {
-  const backHtml = back ? button('←', { variant: 'ghost', href: back, size: 'sm' }) : '<span></span>'
+  const backHtml = back ? button('←', { variant: 'ghost', href: back, size: 'sm', ariaLabel: 'Back' }) : '<span></span>'
 
   const topbar =
     '<header class="sticky top-0 bg-white/80 backdrop-blur border-b border-brand-100 px-4 py-3 flex items-center justify-between">' +

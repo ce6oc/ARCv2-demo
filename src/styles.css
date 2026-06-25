@@ -26,4 +26,8 @@
   body {
     @apply bg-canvas text-brand-700 font-sans antialiased;
   }
+  :focus-visible {
+    outline: 3px solid var(--color-brand-300);
+    outline-offset: 2px;
+  }
 }
