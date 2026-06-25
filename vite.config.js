@@ -1,19 +1,18 @@
 import { defineConfig } from 'vite'
-import { resolve } from 'node:path'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { readdirSync } from 'node:fs'
 import tailwindcss from '@tailwindcss/vite'
 
-const pages = [
-  'index', 'teacher-signin', 'teacher-dashboard', 'classes',
-  'lesson-library', 'lesson-builder', 'live-monitor', 'analytics',
-  'join', 'student-lessons', 'player', 'results',
-]
+const root = dirname(fileURLToPath(import.meta.url))
+const pages = readdirSync(root).filter((f) => f.endsWith('.html'))
 
 export default defineConfig({
   plugins: [tailwindcss()],
   build: {
     rollupOptions: {
       input: Object.fromEntries(
-        pages.map((p) => [p, resolve(__dirname, `${p}.html`)])
+        pages.map((p) => [p.replace(/\.html$/, ''), resolve(root, p)])
       ),
     },
   },
