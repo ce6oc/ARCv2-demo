@@ -13,6 +13,7 @@ export default defineConfig({
     environment: 'jsdom',
   },
   build: {
+    target: 'es2022', // top-level await is used in page modules (ES2022 feature)
     rollupOptions: {
       input: Object.fromEntries(
         pages.map((p) => [p.replace(/\.html$/, ''), resolve(root, p)])
