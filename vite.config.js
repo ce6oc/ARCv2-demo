@@ -9,6 +9,9 @@ const pages = readdirSync(root).filter((f) => f.endsWith('.html'))
 
 export default defineConfig({
   plugins: [tailwindcss()],
+  test: {
+    environment: 'jsdom',
+  },
   build: {
     rollupOptions: {
       input: Object.fromEntries(
