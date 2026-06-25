@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+
+  --color-brand-50: #faf5ff;
+  --color-brand-100: #f3e8ff;
+  --color-brand-200: #e9d5ff;
+  --color-brand-300: #d8b4fe;
+  --color-brand-400: #c084fc;
+  --color-brand-500: #7c3aed;
+  --color-brand-600: #6d28d9;
+  --color-brand-700: #5b21b6;
+
+  --color-accent-400: #f472b6;
+  --color-accent-500: #db2777;
+  --color-accent-600: #be185d;
+
+  --color-canvas: #fdf4ff;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+}
+
+@layer base {
+  body {
+    @apply bg-canvas text-brand-700 font-sans antialiased;
+  }
+}
