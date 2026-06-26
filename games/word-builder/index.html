@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Builder · EduFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand-50: #faf5ff;
+      --brand-100: #f3e8ff;
+      --brand-200: #e9d5ff;
+      --brand-300: #d8b4fe;
+      --brand-400: #c084fc;
+      --brand-500: #7c3aed;
+      --brand-600: #6d28d9;
+      --brand-700: #5b21b6;
+      --accent-400: #f472b6;
+      --accent-500: #db2777;
+      --accent-600: #be185d;
+      --canvas: #fdf4ff;
+      --radius-card: 1.25rem;
+      --radius-pill: 999px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Nunito", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+      background: linear-gradient(160deg, var(--brand-50) 0%, #ffffff 55%, #fdf2f8 100%);
+      color: var(--brand-700);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: #fff;
+      border-radius: var(--radius-card);
+      box-shadow: 0 10px 30px -12px rgba(124, 58, 237, 0.25);
+      border: 1px solid var(--brand-200);
+      padding: 18px 18px 16px;
+    }
+    .hint {
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.02rem;
+      margin: 0 0 12px;
+    }
+    .slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .slot {
+      width: 46px;
+      height: 54px;
+      border-radius: 0.9rem;
+      border: 2px dashed var(--brand-300);
+      background: var(--brand-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--brand-700);
+      cursor: default;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    }
+    .slot.filled {
+      background: linear-gradient(135deg, var(--brand-500), var(--accent-500));
+      border-style: solid;
+      border-color: var(--brand-500);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 10px -4px rgba(124, 58, 237, 0.6);
+    }
+    .slot.filled:hover { transform: translateY(-1px); }
+    .slot.filled:focus-visible {
+      outline: 3px solid var(--brand-300);
+      outline-offset: 2px;
+    }
+    .slot.win {
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      border-color: #16a34a;
+    }
+    .pool-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-400);
+      margin: 0 0 8px;
+    }
+    .pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      min-height: 52px;
+      padding: 10px;
+      border-radius: var(--radius-card);
+      background: var(--brand-50);
+      border: 1px solid var(--brand-100);
+      margin-bottom: 12px;
+    }
+    .tile {
+      width: 44px;
+      height: 44px;
+      border-radius: 0.8rem;
+      border: none;
+      background: #fff;
+      border: 2px solid var(--brand-300);
+      color: var(--brand-700);
+      font-size: 1.3rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s, transform 0.08s, box-shadow 0.15s;
+      box-shadow: 0 2px 0 var(--brand-200);
+      user-select: none;
+    }
+    .tile:hover {
+      border-color: var(--accent-400);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px -2px rgba(219, 39, 119, 0.35);
+    }
+    .tile:active { transform: translateY(0); }
+    .tile:focus-visible {
+      outline: 3px solid var(--accent-400);
+      outline-offset: 2px;
+    }
+    .tile.used { visibility: hidden; pointer-events: none; }
+    .empty-note {
+      color: var(--brand-400);
+      font-size: 0.85rem;
+      font-weight: 600;
+      align-self: center;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .btn {
+      font-family: inherit;
+      font-weight: 800;
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: background 0.15s, color 0.15s;
+      border: 2px solid transparent;
+    }
+    .btn-clear {
+      background: #fff;
+      color: var(--brand-600);
+      border-color: var(--brand-300);
+    }
+    .btn-clear:hover { background: var(--brand-50); border-color: var(--brand-400); }
+    .btn-clear:focus-visible { outline: 3px solid var(--brand-300); outline-offset: 2px; }
+    .btn-clear:disabled { opacity: 0.4; cursor: not-allowed; }
+    .skip {
+      background: none;
+      border: none;
+      color: var(--brand-400);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 4px;
+    }
+    .skip:hover { color: var(--accent-500); }
+    .skip:focus-visible { outline: 3px solid var(--brand-300); outline-offset: 2px; border-radius: 4px; }
+
+    .celebrate {
+      text-align: center;
+      padding: 6px 0 2px;
+    }
+    .celebrate .emoji { font-size: 2.1rem; line-height: 1; }
+    .celebrate .title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin: 4px 0 2px;
+      color: var(--brand-600);
+    }
+    .sent-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #16a34a;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 380px) {
+      .slot { width: 40px; height: 48px; font-size: 1.4rem; }
+      .tile { width: 40px; height: 40px; font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="game">
+    <p class="hint">Spell the secret word 🔤</p>
+    <div class="slots" id="slots" aria-label="Letter slots"></div>
+    <p class="pool-label">Letter tiles</p>
+    <div class="pool" id="pool" aria-label="Available letters"></div>
+    <div class="actions">
+      <button type="button" class="btn btn-clear" id="clear" aria-label="Clear letters">Clear</button>
+      <button type="button" class="skip" id="skip">Give up / skip</button>
+    </div>
+    <div class="celebrate hidden" id="celebrate">
+      <div class="emoji">🎉</div>
+      <div class="title" id="celebrate-title"></div>
+      <span class="sent-note">Sent to lesson ✓</span>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var DEFAULT_TARGET = 'STAR';
+      var DEFAULT_LETTERS = ['S', 'T', 'A', 'R', 'X', 'O'];
+
+      function parseLetters(raw) {
+        if (!raw) return DEFAULT_LETTERS.slice();
+        var arr = raw.split(',').map(function (c) { return c.trim(); }).filter(Boolean);
+        return arr.length ? arr : DEFAULT_LETTERS.slice();
+      }
+
+      var target = (params.get('target') || DEFAULT_TARGET).toUpperCase();
+      var letters = parseLetters(params.get('letters')).map(function (c) { return c.toUpperCase(); });
+
+      var tiles = letters.map(function (letter, i) { return { id: 't' + i, letter: letter }; });
+      var placed = new Array(target.length).fill(null);
+      var done = false;
+
+      var slotsEl = document.getElementById('slots');
+      var poolEl = document.getElementById('pool');
+      var clearBtn = document.getElementById('clear');
+      var skipBtn = document.getElementById('skip');
+      var celebrateEl = document.getElementById('celebrate');
+      var celebrateTitle = document.getElementById('celebrate-title');
+
+      function isWin() {
+        for (var i = 0; i < target.length; i++) {
+          var id = placed[i];
+          if (id == null) return false;
+          var tile = tiles.find(function (t) { return t.id === id; });
+          if (!tile || tile.letter !== target.charAt(i)) return false;
+        }
+        return true;
+      }
+
+      function placeTile(id) {
+        if (done) return;
+        var emptyIdx = placed.indexOf(null);
+        if (emptyIdx === -1) return;
+        placed[emptyIdx] = id;
+        afterChange();
+      }
+
+      function unplaceSlot(idx) {
+        if (done) return;
+        placed[idx] = null;
+        afterChange();
+      }
+
+      function afterChange() {
+        render();
+        if (isWin()) win();
+      }
+
+      function win() {
+        done = true;
+        Array.prototype.forEach.call(slotsEl.children, function (s) { s.classList.add('win'); });
+        celebrateTitle.textContent = 'You spelled ' + target + '!';
+        celebrateEl.classList.remove('hidden');
+        clearBtn.disabled = true;
+        window.parent.postMessage(
+          { type: 'EDUFLOW_COMPLETE', data: { score: 100, word: target } },
+          '*'
+        );
+      }
+
+      function giveUp() {
+        if (done) return;
+        done = true;
+        window.parent.postMessage(
+          { type: 'EDUFLOW_COMPLETE', data: { score: 0, word: target } },
+          '*'
+        );
+        celebrateTitle.textContent = 'The word was ' + target + '.';
+        celebrateEl.classList.remove('hidden');
+        clearBtn.disabled = true;
+      }
+
+      function clearSlots() {
+        if (done) return;
+        for (var i = 0; i < placed.length; i++) placed[i] = null;
+        render();
+      }
+
+      function render() {
+        var i;
+        slotsEl.innerHTML = '';
+        for (i = 0; i < target.length; i++) {
+          (function (idx) {
+            var id = placed[idx];
+            var slot = document.createElement('div');
+            slot.className = 'slot' + (id != null ? ' filled' : '');
+            slot.setAttribute('role', 'img');
+            slot.setAttribute('aria-label', 'Slot ' + (idx + 1) + (id != null ? ', ' + tiles.find(function (t) { return t.id === id; }).letter : ', empty'));
+            if (id != null) {
+              slot.tabIndex = 0;
+              slot.textContent = tiles.find(function (t) { return t.id === id; }).letter;
+              slot.addEventListener('click', function () { unplaceSlot(idx); });
+              slot.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); unplaceSlot(idx); }
+              });
+            }
+            slotsEl.appendChild(slot);
+          })(i);
+        }
+
+        var anyPlaced = placed.some(function (p) { return p != null; });
+        clearBtn.disabled = !anyPlaced;
+
+        poolEl.innerHTML = '';
+        var anyAvailable = false;
+        tiles.forEach(function (tile) {
+          var used = placed.indexOf(tile.id) !== -1;
+          if (!used) anyAvailable = true;
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'tile' + (used ? ' used' : '');
+          btn.textContent = tile.letter;
+          btn.setAttribute('aria-label', 'Letter ' + tile.letter);
+          if (!used) {
+            btn.addEventListener('click', function () { placeTile(tile.id); });
+          }
+          poolEl.appendChild(btn);
+        });
+        if (!anyAvailable) {
+          var note = document.createElement('span');
+          note.className = 'empty-note';
+          note.textContent = 'All letters placed 🪄';
+          poolEl.appendChild(note);
+        }
+      }
+
+      clearBtn.addEventListener('click', clearSlots);
+      skipBtn.addEventListener('click', giveUp);
+
+      render();
+    })();
+  </script>
+</body>
+</html>
