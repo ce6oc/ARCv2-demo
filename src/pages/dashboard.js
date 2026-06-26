@@ -1,6 +1,6 @@
 import { api } from '../data/api.js'
 import { teacherShell } from '../components/teacher-layout.js'
-import { stat, button, card, tag, esc } from '../components/ui.js'
+import { stat, button, card, tag, esc, link } from '../components/ui.js'
 import { $, app } from '../components/page.js'
 
 app().innerHTML =
@@ -14,7 +14,7 @@ const banner =
   '<h2 class="text-xl font-extrabold">Launch a live lesson 📡</h2>' +
   '<p class="text-white/80 text-sm mt-1">Run a lesson in real time and watch answers roll in.</p>' +
   '</div>' +
-  '<a href="/live-monitor.html" class="inline-flex items-center gap-2 rounded-pill bg-white text-brand-600 font-bold px-6 py-3 hover:bg-brand-50 transition shrink-0">Start live session ▶</a>' +
+  '<a href="' + link('/live-monitor.html') + '" class="inline-flex items-center gap-2 rounded-pill bg-white text-brand-600 font-bold px-6 py-3 hover:bg-brand-50 transition shrink-0">Start live session ▶</a>' +
   '</div>'
 
 const stats =

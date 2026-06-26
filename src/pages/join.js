@@ -1,6 +1,6 @@
 import { api } from '../data/api.js'
 import { avatars } from '../data/mock.js'
-import { logo, button, avatar, esc, card } from '../components/ui.js'
+import { logo, button, avatar, esc, card, link } from '../components/ui.js'
 
 const params = new URLSearchParams(location.search)
 const app = document.getElementById('app')
@@ -146,7 +146,7 @@ function wireStepTwo() {
     startBtn.addEventListener('click', () => {
       const name = nick.value.trim()
       if (!name) return
-      location.href = `/student-lessons.html?name=${encodeURIComponent(name)}&avatar=${encodeURIComponent(state.avatarId)}`
+      location.href = link(`/student-lessons.html?name=${encodeURIComponent(name)}&avatar=${encodeURIComponent(state.avatarId)}`)
     })
   }
   rewireGrid()

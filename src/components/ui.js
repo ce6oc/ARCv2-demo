@@ -14,11 +14,23 @@ export function esc(s) {
     .replace(/'/g, '&#39;')
 }
 
+// Prefix internal (root-absolute) paths with the deployment base so links work
+// under a sub-path (GitHub project Pages serve at /ARCv2-demo/). External,
+// protocol-relative, data, mailto, tel, and hash-only URLs pass through.
+// In dev and tests import.meta.env.BASE_URL is '/', so behaviour is unchanged.
+export function link(path) {
+  if (path == null) return path
+  const s = String(path)
+  if (s === '' || /^(?:[a-z][a-z0-9+.-]*:|\/\/|data:|mailto:|tel:|#|\?)/i.test(s)) return s
+  const base = import.meta.env.BASE_URL || '/'
+  return base.replace(/\/$/, '') + '/' + s.replace(/^\//, '')
+}
+
 export function logo({ small = false } = {}) {
   const dot = small ? 'w-8 h-8 text-base' : 'w-10 h-10 text-xl'
   const word = small ? 'text-lg' : 'text-2xl'
   return (
-    '<a href="/" class="inline-flex items-center gap-2">' +
+    '<a href="' + link('/') + '" class="inline-flex items-center gap-2">' +
     `<span class="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-500 ${dot}">🚀</span>` +
     `<span class="font-extrabold ${word}"><span class="text-brand-700">Edu</span><span class="text-accent-500">Flow</span></span>` +
     '</a>'
@@ -42,7 +54,7 @@ export function button(label, { variant = 'primary', href, size = 'md', cls = ''
   const classes = `${base} ${variants[variant] || variants.primary} ${sizes[size] || sizes.md} ${cls}`.trim()
   const inner = esc(label)
   const aria = ariaLabel ? ` aria-label="${esc(ariaLabel)}"` : ''
-  if (href) return `<a href="${esc(href)}" class="${classes}"${aria}>${inner}</a>`
+  if (href) return `<a href="${esc(link(href))}" class="${classes}"${aria}>${inner}</a>`
   return `<button type="button" class="${classes}"${aria}>${inner}</button>`
 }
 

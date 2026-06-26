@@ -1,6 +1,6 @@
 import { api } from '../data/api.js'
 import { teacherShell } from '../components/teacher-layout.js'
-import { tag, badge, button, card, avatar, esc } from '../components/ui.js'
+import { tag, badge, button, card, avatar, esc, link } from '../components/ui.js'
 import { $, $$, app } from '../components/page.js'
 
 const params = new URLSearchParams(location.search)
@@ -60,7 +60,7 @@ function accessCard(cls) {
     `<button type="button" id="copy-code" class="font-mono text-xl font-extrabold tracking-[0.15em] bg-brand-50 text-brand-700 border-2 border-dashed border-brand-300 rounded-pill px-5 py-2 hover:bg-brand-100 transition">${esc(cls.classCode)}</button>` +
     '<span id="copy-feedback" class="text-sm font-semibold text-green-600 opacity-0 transition">Copied!</span>' +
     '</div>' +
-    '<p class="text-sm text-brand-400 mt-3">Students use this code at <a href="/join.html" class="text-brand-600 underline font-semibold">/join</a>.</p>' +
+    '<p class="text-sm text-brand-400 mt-3">Students use this code at <a href="' + link('/join.html') + '" class="text-brand-600 underline font-semibold">/join</a>.</p>' +
     `<p class="text-sm mt-2"><a href="${esc(cls.registrationLink)}" target="_blank" rel="noopener" class="text-brand-600 underline font-semibold break-all">Registration link</a></p>`
   )
 }

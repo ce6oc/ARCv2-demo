@@ -1,6 +1,6 @@
 import { api } from '../data/api.js'
 import { studentShell } from '../components/student-layout.js'
-import { progressBar } from '../components/ui.js'
+import { progressBar, link } from '../components/ui.js'
 import { createSession, getCurrentScene, applyBranching, recordResponse, computeScore } from '../player/engine.js'
 import { scoreScene } from '../player/scoring.js'
 import { renderScene } from '../components/scene-renderers.js'
@@ -86,6 +86,6 @@ if (!lesson) {
       responses: session.responses,
     }
     sessionStorage.setItem('eduflow:lastResult', JSON.stringify(result))
-    location.href = '/results.html'
+    location.href = link('/results.html')
   }
 }

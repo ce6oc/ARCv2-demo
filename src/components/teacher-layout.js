@@ -1,5 +1,5 @@
 // Teacher app shell. Pure HTML string — pages inject `content` and mount into #app.
-import { logo, button, avatar, esc } from './ui.js'
+import { logo, button, avatar, esc, link } from './ui.js'
 import { teacher } from '../data/mock.js'
 
 const NAV = [
@@ -18,7 +18,7 @@ export function teacherShell({ active, content, title } = {}) {
       ? 'bg-brand-50 text-brand-700 font-bold border-l-4 border-brand-500'
       : 'text-brand-400 hover:bg-brand-50 hover:text-brand-700 border-l-4 border-transparent'
     return (
-      `<a href="${n.href}" class="flex items-center gap-3 px-3 py-2 rounded-pill text-sm transition ${cls}">` +
+      `<a href="${esc(link(n.href))}" class="flex items-center gap-3 px-3 py-2 rounded-pill text-sm transition ${cls}">` +
       `<span class="text-lg">${n.icon}</span><span>${n.label}</span></a>`
     )
   }).join('')

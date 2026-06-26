@@ -1,6 +1,7 @@
 // Scene renderers for EduFlow prototype.
 // Contract: renderScene(scene, onSubmit, mountEl) — draws a scene into mountEl
 // and calls onSubmit(payload) with payload shapes matching src/player/scoring.js.
+import { link } from './ui.js'
 
 const esc = (s) =>
   String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -380,7 +381,7 @@ function renderCustom(scene, onSubmit, mountEl) {
 
   mountEl.innerHTML =
     contentBlock(scene.content) +
-    `<iframe src="${escAttr(embedUrl)}" class="w-full h-80 rounded-card border border-brand-200" loading="lazy"></iframe>` +
+    `<iframe src="${escAttr(link(embedUrl))}" class="w-full h-80 rounded-card border border-brand-200" loading="lazy"></iframe>` +
     `<div class="mt-4">${continueBtn()}</div>`
 
   const finish = (payload) => {

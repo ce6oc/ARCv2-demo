@@ -8,6 +8,10 @@ const root = dirname(fileURLToPath(import.meta.url))
 const pages = readdirSync(root).filter((f) => f.endsWith('.html'))
 
 export default defineConfig({
+  // GitHub project Pages serve this repo at /ARCv2-demo/. In dev (and under
+  // vitest) we keep '/', so import.meta.env.BASE_URL stays '/' locally and
+  // '/ARCv2-demo/' in CI builds — see src link() helper.
+  base: process.env.CI ? '/ARCv2-demo/' : '/',
   plugins: [tailwindcss()],
   test: {
     environment: 'jsdom',
