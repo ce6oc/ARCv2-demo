@@ -24,7 +24,7 @@ Then open http://localhost:5173.
 - **Teacher:** any sign-in works (prefilled) → teacher dashboard.
 - **Student class code:** `SPACE-2024-A` (also try `READ-2024-B`).
 
-## Tech
+## Tech stack
 Vite + Tailwind CSS v4 + vanilla JS. The "backend" is a JS mock API (`src/data/api.js`).
 Engine logic is unit-tested with Vitest (`npm test`).
 
