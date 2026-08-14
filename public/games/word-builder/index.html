@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Word Builder · EduFlow</title>
+  <title>Word Builder · ARCFlow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -296,7 +296,7 @@
         celebrateEl.classList.remove('hidden');
         clearBtn.disabled = true;
         window.parent.postMessage(
-          { type: 'EDUFLOW_COMPLETE', data: { score: 100, word: target } },
+          { type: 'ARCFLOW_COMPLETE', data: { score: 100, word: target } },
           '*'
         );
       }
@@ -305,7 +305,7 @@
         if (done) return;
         done = true;
         window.parent.postMessage(
-          { type: 'EDUFLOW_COMPLETE', data: { score: 0, word: target } },
+          { type: 'ARCFLOW_COMPLETE', data: { score: 0, word: target } },
           '*'
         );
         celebrateTitle.textContent = 'The word was ' + target + '.';

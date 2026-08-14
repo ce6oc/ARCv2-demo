@@ -85,7 +85,7 @@ if (!lesson) {
       score, durationInSeconds: Math.round((Date.now() - session.startedAt) / 1000),
       responses: session.responses,
     }
-    sessionStorage.setItem('eduflow:lastResult', JSON.stringify(result))
+    sessionStorage.setItem('arcflow:lastResult', JSON.stringify(result))
     location.href = link('/results.html')
   }
 }

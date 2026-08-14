@@ -1,17 +1,17 @@
 export const teacher = {
-  id: 'user-1', name: 'Ms. Rivera', email: 'rivera@eduflow.app',
+  id: 'user-1', name: 'Ms. Rivera', email: 'rivera@arcflow.app',
   avatar: '👩‍🏫', school: 'Maple Grove Elementary',
 }
 
 export const classes = [
   {
     id: 'class-1', className: 'Room 204 — Explorers', classCode: 'SPACE-2024-A',
-    registrationLink: 'https://eduflow.app/join?code=SPACE-2024-A',
+    registrationLink: 'https://arcflow.app/join?code=SPACE-2024-A',
     gradeLevel: '3', studentCount: 24, isActive: true, createdAt: '2026-01-12',
   },
   {
     id: 'class-2', className: 'Reading Rockets', classCode: 'READ-2024-B',
-    registrationLink: 'https://eduflow.app/join?code=READ-2024-B',
+    registrationLink: 'https://arcflow.app/join?code=READ-2024-B',
     gradeLevel: '4', studentCount: 19, isActive: true, createdAt: '2026-02-03',
   },
 ]

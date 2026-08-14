@@ -248,7 +248,7 @@ describe('scene renderers', () => {
     expect(m.querySelector('[data-action="continue"]')).toBeTruthy()
     window.dispatchEvent(
       new MessageEvent('message', {
-        data: { type: 'EDUFLOW_COMPLETE', data: { score: 100 } },
+        data: { type: 'ARCFLOW_COMPLETE', data: { score: 100 } },
       })
     )
     expect(received[0]).toEqual({ score: 100 })
@@ -282,7 +282,7 @@ describe('scene renderers', () => {
     )
     window.dispatchEvent(
       new MessageEvent('message', {
-        data: { type: 'EDUFLOW_COMPLETE', data: { score: 7 } },
+        data: { type: 'ARCFLOW_COMPLETE', data: { score: 7 } },
       })
     )
     // only the latest renderer should receive the message
@@ -301,7 +301,7 @@ describe('scene renderers', () => {
     renderScene({ sceneType: 'content', content: '<p>done</p>' }, () => {}, m)
     window.dispatchEvent(
       new MessageEvent('message', {
-        data: { type: 'EDUFLOW_COMPLETE', data: { score: 1 } },
+        data: { type: 'ARCFLOW_COMPLETE', data: { score: 1 } },
       })
     )
     expect(a.received).toHaveLength(0)

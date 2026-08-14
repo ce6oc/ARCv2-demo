@@ -1,4 +1,4 @@
-// Shared UI primitives for EduFlow prototype.
+// Shared UI primitives for ARCFlow prototype.
 // Contract: every export returns an HTML STRING (no DOM nodes, no event
 // listeners). Interactivity is the page's job. Dynamic text is escaped via esc().
 
@@ -27,12 +27,12 @@ export function link(path) {
 }
 
 export function logo({ small = false } = {}) {
-  const dot = small ? 'w-8 h-8 text-base' : 'w-10 h-10 text-xl'
+  const size = small ? 'w-8 h-8' : 'w-10 h-10'
   const word = small ? 'text-lg' : 'text-2xl'
   return (
     '<a href="' + link('/') + '" class="inline-flex items-center gap-2">' +
-    `<span class="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-500 ${dot}">🚀</span>` +
-    `<span class="font-extrabold ${word}"><span class="text-brand-700">Edu</span><span class="text-accent-500">Flow</span></span>` +
+    `<img src="${esc(link('/logo.png'))}" alt="ARCFlow" class="inline-block rounded-full object-cover shrink-0 ${size}">` +
+    `<span class="font-extrabold ${word}"><span class="text-brand-700">ARC</span><span class="text-accent-500">Flow</span></span>` +
     '</a>'
   )
 }
@@ -162,7 +162,7 @@ export function pageHead(title, subtitle, { back } = {}) {
 }
 
 export function footer() {
-  return '<footer class="text-xs text-brand-300 py-6 text-center">EduFlow — interactive micro-lessons · prototype demo</footer>'
+  return '<footer class="text-xs text-brand-300 py-6 text-center">ARCFlow — interactive micro-lessons · prototype demo</footer>'
 }
 
 export function emptyState(message) {

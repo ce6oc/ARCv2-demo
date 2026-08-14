@@ -13,7 +13,7 @@ function fmtDur(sec) {
 
 let result = null
 try {
-  const raw = sessionStorage.getItem('eduflow:lastResult')
+  const raw = sessionStorage.getItem('arcflow:lastResult')
   result = raw ? JSON.parse(raw) : null
 } catch {
   result = null

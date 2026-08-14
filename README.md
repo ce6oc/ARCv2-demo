@@ -1,6 +1,6 @@
-# EduFlow — Interactive Micro-Lessons (Prototype)
+# ARCFlow — Interactive Micro-Lessons (Prototype)
 
-A visual, no-backend prototype demonstrating EduFlow: a platform where teachers build
+A visual, no-backend prototype demonstrating ARCFlow: a platform where teachers build
 interactive lessons and students join with a code. Built to show clients the product
 workflow and key features.
 

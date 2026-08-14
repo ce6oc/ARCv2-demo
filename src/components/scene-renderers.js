@@ -1,4 +1,4 @@
-// Scene renderers for EduFlow prototype.
+// Scene renderers for ARCFlow prototype.
 // Contract: renderScene(scene, onSubmit, mountEl) — draws a scene into mountEl
 // and calls onSubmit(payload) with payload shapes matching src/player/scoring.js.
 import { link } from './ui.js'
@@ -392,7 +392,7 @@ function renderCustom(scene, onSubmit, mountEl) {
 
   const handler = (event) => {
     const data = event && event.data
-    if (data && data.type === 'EDUFLOW_COMPLETE') finish(data.data)
+    if (data && data.type === 'ARCFLOW_COMPLETE') finish(data.data)
   }
   _messageHandler = handler
   window.addEventListener('message', handler)

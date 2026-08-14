@@ -9,7 +9,7 @@ app.innerHTML =
   card(
     '<h1 class="text-2xl font-extrabold text-brand-700">Welcome back 👋</h1>' +
     '<p class="text-brand-400 mt-1">Sign in to your teacher account</p>' +
-    '<div class="mt-6">' + field('Email', 'email', 'rivera@eduflow.app') + '</div>' +
+    '<div class="mt-6">' + field('Email', 'email', 'rivera@arcflow.app') + '</div>' +
     '<div class="mt-4">' + field('Password', 'password', '••••••••') + '</div>' +
     '<div class="mt-6">' +
     button('Sign in', { variant: 'primary', href: '/teacher-dashboard.html', cls: 'w-full justify-center' }) +

@@ -44,7 +44,7 @@ function hero() {
     '<span class="bg-gradient-to-r from-brand-500 to-accent-500 bg-clip-text text-transparent">Lessons that actually click.</span>' +
     '</h1>'
   const subcopy =
-    '<p class="mt-5 text-lg md:text-xl text-brand-600 max-w-xl">EduFlow lets teachers build rich, interactive lessons in minutes — quizzes, sorting, voice responses, even mini-games. Students join with a code. No app, no friction.</p>'
+    '<p class="mt-5 text-lg md:text-xl text-brand-600 max-w-xl">ARCFlow lets teachers build rich, interactive lessons in minutes — quizzes, sorting, voice responses, even mini-games. Students join with a code. No app, no friction.</p>'
   const ctas =
     '<div class="mt-7 flex flex-wrap gap-3">' +
     button("I'm a teacher", { variant: 'primary', size: 'lg', href: '/teacher-signin.html' }) +
@@ -259,7 +259,7 @@ function quote() {
     '<div class="max-w-4xl mx-auto px-4">' +
     '<div class="rounded-card bg-gradient-to-r from-brand-500 to-accent-500 text-white p-10 md:p-14 text-center shadow-lg">' +
     '<div class="text-5xl mb-4">💬</div>' +
-    '<p class="text-2xl md:text-3xl font-extrabold leading-snug">“My students actually ask to do EduFlow lessons.”</p>' +
+    '<p class="text-2xl md:text-3xl font-extrabold leading-snug">“My students actually ask to do ARCFlow lessons.”</p>' +
     '<p class="mt-4 text-white/80 font-semibold">— Ms. Rivera, Grade 3</p>' +
     '</div>' +
     '</div>' +
@@ -271,7 +271,7 @@ function finalCta() {
   return (
     '<section class="py-16 md:py-20">' +
     '<div class="max-w-3xl mx-auto px-4 text-center">' +
-    '<h2 class="text-3xl md:text-4xl font-extrabold text-brand-700">Ready to try EduFlow?</h2>' +
+    '<h2 class="text-3xl md:text-4xl font-extrabold text-brand-700">Ready to try ARCFlow?</h2>' +
     '<p class="mt-3 text-lg text-brand-600">Join in seconds. Build your first lesson today.</p>' +
     '<div class="mt-7 flex flex-wrap justify-center gap-3">' +
     button("I'm a teacher", { variant: 'primary', size: 'lg', href: '/teacher-signin.html' }) +
@@ -288,7 +288,7 @@ function footerHtml() {
     '<div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-4">' +
     logo() +
     '<p class="text-sm text-brand-400 text-center">Prototype demo · Built with Vite + Tailwind</p>' +
-    '<p class="text-sm text-brand-300">© ' + new Date().getFullYear() + ' EduFlow</p>' +
+    '<p class="text-sm text-brand-300">© ' + new Date().getFullYear() + ' ARCFlow</p>' +
     '</div>' +
     '</footer>'
   )

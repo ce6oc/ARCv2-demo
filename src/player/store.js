@@ -1,4 +1,4 @@
-const KEY = (lessonId) => `eduflow:progress:${lessonId}`
+const KEY = (lessonId) => `arcflow:progress:${lessonId}`
 
 export function saveProgress(session) {
   localStorage.setItem(KEY(session.lessonId), JSON.stringify(session))

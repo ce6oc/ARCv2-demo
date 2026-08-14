@@ -1,4 +1,4 @@
-# EduFlow - Project Specification Document
+# ARCFlow - Project Specification Document
 
 **Version:** 1.0  
 **Date:** May 2026  
@@ -11,7 +11,7 @@
 ## 1. Executive Summary
 
 ### 1.1 Project Vision
-**EduFlow** is an interactive educational web platform that empowers teachers to create, customize, and distribute engaging micro-lessons for school students. The platform combines a flexible lesson builder, AI-assisted content generation, rich interactive elements (quizzes, games, audio responses), and deep analytics—all while maintaining student privacy through a hybrid guest/registered access model.
+**ARCFlow** is an interactive educational web platform that empowers teachers to create, customize, and distribute engaging micro-lessons for school students. The platform combines a flexible lesson builder, AI-assisted content generation, rich interactive elements (quizzes, games, audio responses), and deep analytics—all while maintaining student privacy through a hybrid guest/registered access model.
 
 ### 1.2 Core Value Proposition
 | Stakeholder | Value |
@@ -327,10 +327,10 @@ graph LR
   ```js
   // Game → Platform
   window.parent.postMessage({
-    type: 'EDUFLOW_COMPLETE',
+    type: 'ARCFLOW_COMPLETE',
     sceneId: 'scene-xyz',
     data: { score: 100, metadata: {...} }
-  }, 'https://eduflow.app');
+  }, 'https://arcflow.app');
   ```
 
 ---
@@ -405,4 +405,4 @@ POST /api/teachers/lessons/generate         # AI-assisted lesson generation
 
 > **Next Step**: Import this document into your GSD workspace. Break down Epic 1 into actionable tasks with estimates. Begin development with foundation setup.
 
-*Document prepared for EduFlow project planning. Based on structures from IDEAS.md and hybrid access model requirements.*
+*Document prepared for ARCFlow project planning. Based on structures from IDEAS.md and hybrid access model requirements.*

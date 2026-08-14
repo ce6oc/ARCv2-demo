@@ -149,7 +149,7 @@ function build() {
   return (
     '<div>' +
     toolbar() +
-    '<div class="grid md:grid-cols-[200px_1fr_320px] gap-4 items-start">' +
+    '<div class="grid md:grid-cols-[300px_1fr_520px] gap-4 items-start">' +
     palette() + canvas() + inspector() +
     '</div>' +
     '<div id="toast" class="fixed bottom-6 right-6 bg-brand-700 text-white px-4 py-2 rounded-pill shadow-lg opacity-0 pointer-events-none transition-opacity z-50"></div>' +
